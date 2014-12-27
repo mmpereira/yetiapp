@@ -3,13 +3,23 @@ angular.module('starter.controllers', [])
 
 .controller('PhotoCtrl', function($scope, Camera) {
 
-  $scope.getPhoto = function() {
-    Camera.getPicture().then(function(imageURI) {
+    $scope.getPhoto = function() {
+    console.log('Getting camera');
+
+    var options = {
+      quality: 75,
+      targetWidth: 320,
+      targetHeight: 320,
+      saveToPhotoAlbum: false
+    };
+
+    // passing options in as a parameter
+    Camera.getPicture(options).then(function(imageURI) {
       console.log(imageURI);
+      $scope.lastPhoto = imageURI;
     }, function(err) {
       console.err(err);
     });
-  }
 })
 
 .controller('DashCtrl', function($scope) {})
