@@ -4,7 +4,7 @@ angular.module('starter.controllers', [])
   
 
    $scope.init = function() {
-        var myLatlng = new google.maps.LatLng(43.07493,-89.381388);
+        var myLatlng = new google.maps.LatLng(45.965817, 6.944077);
 
         var mapOptions = {
           center: myLatlng,
