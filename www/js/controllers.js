@@ -1,25 +1,26 @@
 angular.module('starter.controllers', [])
 
 
-.controller('PhotoCtrl', function($scope, Camera) {
+.controller('PhotoCtrl', function($scope, $cordovaCamera) {
 
-    $scope.getPhoto = function() {
-    console.log('Getting camera');
+     var options = {
+    quality: 50,
+    destinationType: Camera.DestinationType.DATA_URL,
+    sourceType: Camera.PictureSourceType.CAMERA,
+    allowEdit: true,
+    encodingType: Camera.EncodingType.JPEG,
+    targetWidth: 100,
+    targetHeight: 100,
+    popoverOptions: CameraPopoverOptions,
+    saveToPhotoAlbum: false
+  };
 
-    var options = {
-      quality: 75,
-      targetWidth: 320,
-      targetHeight: 320,
-      saveToPhotoAlbum: false
-    };
-
-    // passing options in as a parameter
-    Camera.getPicture(options).then(function(imageURI) {
-      console.log(imageURI);
-      $scope.lastPhoto = imageURI;
-    }, function(err) {
-      console.err(err);
-    });
+  $cordovaCamera.getPicture(options).then(function(imageData) {
+    var image = document.getElementById('myImage');
+    image.src = "data:image/jpeg;base64," + imageData;
+  }, function(err) {
+    // error
+  });
 })
 
 .controller('DashCtrl', function($scope) {})
