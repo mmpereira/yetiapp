@@ -5,6 +5,9 @@ angular.module('starter.controllers', [])
 
 
   $scope.vibrate = function() {
+    
+    console.log('vibration: ', $cordovaVibration);
+    $scope.vibrating = "bzzzz";
     $cordovaVibration.vibrate(100);
   };
 
