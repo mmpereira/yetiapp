@@ -18,10 +18,10 @@ angular.module('starter.controllers', [])
     };
   
     $cordovaCamera.getPicture(options).then(function(imageData) {
-      var image = document.getElementById('myImage');
-      image.src = "data:image/jpeg;base64," + imageData;
+      // var image = document.getElementById('myImage');
+      $scope.image = "data:image/jpeg;base64," + imageData;
       
-      $scope.message = image.src;
+      
     }, function(err) {
       // error
     });  
