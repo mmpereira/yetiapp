@@ -1,7 +1,12 @@
 angular.module('starter.controllers', [])
 
 
-.controller('PhotoCtrl', function($scope, $cordovaCamera) {
+.controller('PhotoCtrl', function($scope, $cordovaCamera, $cordovaVibration) {
+
+
+  $scope.vibrate = function() {
+    $cordovaVibration.vibrate(100);
+  };
 
   $scope.takePhoto = function() {
   
